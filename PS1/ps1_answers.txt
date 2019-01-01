@@ -1,0 +1,14 @@
+1) Greedy Algorithm Result = [['Betsy'], ['Henrietta'], ['Herman', 'Maggie'], ['Oreo', 'Moo Moo'], ['Millie', 'Milkshake', 'Lola'], ['Florence']]
+
+Brute Force Algorithm Result = [['Lola', 'Florence', 'Oreo'], ['Herman', 'Moo Moo'], ['Millie', 'Milkshake', 'Maggie'], ['Henrietta'], ['Betsy']]
+
+2) Greedy algorithm does not return the optimal solution but it returns something very close to it. Because even there are enough room for small values since algorithm tries to put the biggest value in it we can not use that room efficiently.
+
+3) Brute force algorithm returns the optimal solution. Because it calculates every possible solution then selects the best one.
+
+
+1) Since brute force algorithm calculates every possible result, if there were 30 different egg weights then number of possible results would increase and since algorithm uses recursive calls to calculate the results it would be pretty hard to solve this problem with brute force algorithm.
+
+2) Objective function would be that select the biggest possible value first and as many times as you can and then if there are not enough room for biggest value then select second biggest value. Constrains would be that selected egg weight should be less than the target_weight.
+
+3) Greedy algorithm will always return the optimal solution to this problem. Because our aim is taking the least number of eggs. So we should pick biggest values as many times as we can and that is what greedy algorithm is.
