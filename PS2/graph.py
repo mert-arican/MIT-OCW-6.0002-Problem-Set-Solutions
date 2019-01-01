@@ -50,32 +50,62 @@ class Edge(object):
         return self.dest
 
     def __str__(self):
+        return '{}->{}'.format(self.src, self.dest)
 
 
 class WeightedEdge(Edge):
     def __init__(self, src, dest, total_distance, outdoor_distance):
-
-
+        self.src = src
+        self.dest = dest
+        self.total_distance = total_distance
+        self.outdoor_distance = outdoor_distance
+        
     def get_total_distance(self):
         return self.total_distance
 
     def get_outdoor_distance(self):
-
+        return self.outdoor_distance
+    
     def __str__(self):
+        return '{}->{} ({}, {})'.format(self.src, self.dest, self.total_distance, self.outdoor_distance)
+
 
 class Digraph(object):
-
+    """Represents a directed graph of Node and Edge objects"""
     def __init__(self):
+        self.nodes = set([])
+        self.edges = {}  # must be a dict of Node -> list of edges
 
     def __str__(self):
+        edge_strs = []
+        for edges in self.edges.values():
+            for edge in edges:
+                edge_strs.append(str(edge))
+        edge_strs = sorted(edge_strs)  # sort alphabetically
+        return '\n'.join(edge_strs)  # concat edge_strs with "\n"s between them
 
     def get_edges_for_node(self, node):
+        return self.edges[node]
 
     def has_node(self, node):
+        return node in self.nodes
 
     def add_node(self, node):
-
+        """Adds a Node object to the Digraph. Raises a ValueError if it is
+        already in the graph."""
+        if node in self.nodes:
+            raise ValueError("Duplicate node")
+        else:
+            self.nodes.add(node)
+            self.edges[node] = []
+           
     def add_edge(self, edge):
+        """Adds an Edge or WeightedEdge instance to the Digraph. Raises a
+        ValueError if either of the nodes associated with the edge is not
+        in the  graph."""
+        if edge.get_source() not in self.nodes or edge.get_destination() not in self.nodes:
+            raise ValueError("Node not in graph")
+        self.edges[edge.src].append(edge)
 
 
 # ================================================================
@@ -128,7 +158,7 @@ class TestGraph(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.g.add_node(self.na)
 
-    def test_graph_str(self):        
+    def test_graph_str(self):
         expected = "a->b (15, 10)\na->c (14, 6)\nb->c (3, 1)"
         self.assertEqual(str(self.g), expected)
 
