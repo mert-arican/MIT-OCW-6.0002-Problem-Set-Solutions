@@ -6,7 +6,6 @@ Brute Force Algorithm Result = [['Lola', 'Florence', 'Oreo'], ['Herman', 'Moo Mo
 
 3) Brute force algorithm returns the optimal solution. Because it calculates every possible solution then selects the best one.
 
-
 1) Since brute force algorithm calculates every possible result, if there were 30 different egg weights then number of possible results would increase and since algorithm uses recursive calls to calculate the results it would be pretty hard to solve this problem with brute force algorithm.
 
 2) Objective function would be that select the biggest possible value first and as many times as you can and then if there are not enough room for biggest value then select second biggest value. Constrains would be that selected egg weight should be less than the target_weight.
