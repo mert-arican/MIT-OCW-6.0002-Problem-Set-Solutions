@@ -1,8 +1,8 @@
 # 6.0002 Problem Set 5
 # Graph optimization
-# Name:
-# Collaborators:
-# Time:
+# Name: Mert Arıcan
+# Collaborators: None
+# Time: A lot
 
 #
 # Finding shortest paths through MIT buildings
@@ -19,7 +19,9 @@ from graph import Digraph, Node, WeightedEdge
 # do the graph's edges represent? Where are the distances
 # represented?
 #
-# Answer:
+# Answer: Nodes represents the buildings and edges represents the paths between buildings.
+#   Distances represented in the WeightedEdge class.
+#           
 
 
 # Problem 2b: Implementing load_map
@@ -66,7 +68,8 @@ def load_map(map_filename):
 #
 # What is the objective function for this problem? What are the constraints?
 #
-# Answer:
+# Answer: Objective function is finding the smallest distance between buildings. Constraint is 
+#      the outdoor distance between buildings.
 #
 #
 # Problem 3b: Implement get_best_path
@@ -101,7 +104,7 @@ def get_best_path(digraph, start, end, path, max_dist_outdoors, best_dist, best_
         If there exists no path that satisfies max_total_dist and
         max_dist_outdoors constraints, then return None.
     """
-#   path[0] = path[0] + [start] | Wow what a nice mistake, took 3 days to debug lol. Made me question my life.
+#   path[0] = path[0] + [start] | Wow what a nice mistake, took me 3 days to debug lol. Made me question my life.
 #   I can now go back to my nonexisting social life.
     dist,weight = getMeasures(digraph, path[0] + [start])
     path = [path[0] + [start], dist, weight]    
